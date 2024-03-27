@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link  class="icon"rel="icon" href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcShl93v6kL6fsXx42ixg5I88ACn1jRONchMbg&usqp=CAU"  /
+>
+
+
+<style>
+  /* Styles for all screens */
+body {
+  font-size: 16px;
+}
+
+/* Media query for screens with a maximum width of 600 pixels */
+@media screen and (max-width: 600px) {
+  /* Styles for screens with a width of 600 pixels or less */
+  body {
+    font-size: 14px;
+  }
+}
+
+/* Media query for screens with a minimum width of 601 pixels and a maximum width of 1200 pixels */
+@media screen and (min-width: 601px) and (max-width: 1200px) {
+  /* Styles for screens with a width between 601 and 1200 pixels */
+  body {
+    font-size: 18px;
+  }
+}
+
+/* Media query for screens with a minimum width of 1201 pixels */
+@media screen and (min-width: 1201px) {
+  /* Styles for screens with a width of 1201 pixels or more */
+  body {
+    font-size: 20px;
+  }
+}
+
+* {box-sizing: border-box}
+
+/* Set height of body and the document to 100% */
+body, html {
+  height: 100%;
+  margin: 0;
+  font-family: Arial;
+  border:border-box;
+}
+
+/* Style tab links */
+.tablink {
+  background-color: rgb(170, 49, 164);
+  color: white;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  font-size: 17px;
+  width: 25%;
+  
+}
+
+.tablink:hover {
+  background-color: rgb(0, 0, 0);
+}
+
+/* Style the tab content (and add height:100% for full page content) */
+.tabcontent {
+  color: white;
+  display: none;
+  padding: 100px 20px;
+  height: 100%;
+  text-shadow: #555 ;
+  
+}
+h1{
+  text-shadow: #f5f3f3 10px 2px 8px;
+}
+#Home {background-image: url("https://wallup.net/wp-content/uploads/2016/07/19/11166-colorful-red-blue-pink-purple-blurred-gradient-minimalism-748x468.jpg" );
+background-size: cover;
+background-repeat: no-repeat;
+height:fit-content;
+
+}
+#News {background-image:url("https://w0.peakpx.com/wallpaper/595/667/HD-wallpaper-plain-dark-blue-navy-blue.jpg");
+background-size: cover;
+background-repeat: no-repeat;
+height:fit-content;
+width:auto;
+
+;}
+#Contact {background-color: blue;
+  background-size: cover;
+background-repeat: no-repeat;
+height:fit-content;
+width:auto;
+
+
+}
+#About {  background-image: url("https://media.istockphoto.com/id/1354957653/photo/astrophotography-of-the-milky-way.jpg?s=612x612&w=0&k=20&c=i6ufXhDpXpe3_cYOw7A7vSOa08sm4crU38anfOYeEjo=");
+background-size: cover;
+text-shadow: black 20px;
+opacity: 6.5;
+
+height: fit-content;
+
+width:auto;
+
+}
+.info{
+  height:fit-content;
+  width: 100%;
+  text-align: center;
+  border:2px solid white;
+  border-radius: 20px;
+  box-shadow: whitesmoke 2px 5px 10px;
+  padding:20px;
+ margin-bottom: 40px;
+ background-color:  rgb(0, 0, 0);
+ opacity:70%;
+ color: white;
+ 
+}
+.header{
+  position:fixed;
+  width:100%;
+  z-index:9999 ;
+
+}
+/* Full-width input fields */
+input[type=text], input[type=password] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  outline: none;
+  transition:0.3s all ease;
+}
+input:focus{
+border-radius: 2px ;
+transition: 0.5s all ease;
+scale: 1.0.9;
+border-color: blue;
+box-shadow: 2px 5px 10px blue;
+}
+
+/* Set a style for all buttons */
+button {
+  background-color: #04AA6D;
+  color: white;
+  padding: 14px 20px;
+  margin: 0px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  
+}
+.login{
+  border-radius: 20px;
+  box-shadow:none ;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+/* Extra styles for the cancel button */
+.cancelbtn {
+  width: auto;
+  padding: 10px 18px;
+  background-color: #f44336;
+}
+
+/* Center the image and position the close button */
+.imgcontainer {
+  text-align: center;
+  margin: 24px 0 12px 0;
+  position: relative;
+}
+
+img.avatar {
+  width: 40%;
+  border-radius: 50%;
+}
+
+.container {
+  padding: 16px;
+  color:black;
+}
+
+span.psw {
+  float: right;
+  padding-top: 16px;
+}
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  padding-top: 60px;
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: #fefefe;
+  margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+  border: 1px solid #888;
+  width: 80%; /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button (x) */
+.close {
+  position: absolute;
+  right: 25px;
+  top: 0;
+  color: #000;
+  font-size: 35px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: red;
+  cursor: pointer;
+}
+
+/* Add Zoom Animation */
+.animate {
+  -webkit-animation: animatezoom 0.6s;
+  animation: animatezoom 0.6s
+}
+
+@-webkit-keyframes animatezoom {
+  from {-webkit-transform: scale(0)} 
+  to {-webkit-transform: scale(1)}
+}
+  
+@keyframes animatezoom {
+  from {transform: scale(0)} 
+  to {transform: scale(1)}
+}
+
+/* Change styles for span and cancel button on extra small screens */
+@media screen and (max-width: 300px) {
+  span.psw {
+     display: block;
+     float: none;
+  }
+  .cancelbtn {
+     width: 100%;
+  }
+}
+.breaking-news{
+  height: fit-content;
+  width:100%;
+  font-family:'Times New Roman', Times, serif;
+  font-size: 30px;
+  border:2px solid white;
+  border-radius:40px;
+  box-shadow: 5px 4px 10px white;
+  overflow: hidden;
+  color:#000000;
+  text-shadow: rgb(169, 177, 172) 5px 5px 5px ;
+  margin-bottom:50px;
+  padding:10px;
+  background-color: rgb(169, 177, 172);
+
+
+}
+.nvb{
+  height:100px;
+  background: #000;
+  color:#fff;
+  margin-top:-80px;
+  margin-left:-24px;
+  margin-right:-22px;
+  text-align:center;
+  justify-content:center;
+   align-items:center;
+   padding-top: 17px;
+
+}
+a{
+  border-radius:10px;
+  
+}
+.news-section{
+  margin:5%;
+  margin-top:0%;
+}
+.footer1{
+  height:fit-content;
+ margin:5% -20px -100px -20px ;
+  justify-content: center;
+  background-color: rgba(44, 43, 43, 0.911);
+  color:white;
+  place-items: center;
+  justify-items: center;
+align-items: center;
+text-align: center;
+border-top: cornsilk 2px solid;
+display:flex;
+
+
+}
+.footer1:hover{
+ text-underline-position: below;
+ 
+}
+a{
+  text-decoration:none;
+  color:white;
+  
+}
+a:hover{
+color:blueviolet;
+}
+.app-link{
+  padding: 10px;
+  
+}
+.iii{
+  margin:20px;
+  
+}
+.hero {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: black;
+    background-image: url("Downloads/bbb.jpg");
+    background-size: cover;
+  }
+  .emoji{
+    text-shadow: 10px 10px 0 rgba(0,0,0,1);
+    font-size: 100px;
+  }
+</style>
+</head>
+<body>
+
+  <div class="header">
+<button class="tablink" onclick="openPage ('Home', this, 'red') "><i class="fa-solid fa-house fa-xl" style="color: #ffffff;"></i></button>
+<button class="tablink" onclick="openPage('News', this, 'green')" id="defaultOpen"><i class="fa-regular fa-newspaper fa-lg"></i></button>
+<button class="tablink" onclick="openPage('Contact', this, 'blue')">Contact</button>
+<button class="tablink" onclick="openPage('About',this, 'orange')">Top 1%</button>
+</div>
+
+<div id="Home" class="tabcontent">
+ 
+  <div class="info">
+    <h1 >Hello Everyone! </h1>
+   <p> The best skills for students to learn to enhance their job prospects in 2024 can vary depending on their interests, career goals, and the industry they are targeting. However, certain skills are generally in demand across various fields. Here are some skills that can be valuable for students in 2024 and beyond:</p>
+
+
+
+ <h3>Digital Literacy and Basic Computer Skills:</h3>
+  <i>- Proficiency in using productivity tools, online collaboration platforms, and basic computer programming.</i>
+   
+ <h3>Coding and Programming:</h3>
+   <i> - Learning programming languages such as Python, JavaScript, Java, or C# can open up opportunities in software development, web development, and other technology-related fields.</i>
+
+ <h3>Data Analysis and Data Science:</h3>
+   <i>- Developing skills in data analysis, statistics, and tools like SQL and data visualization tools can be valuable, especially in fields like data science, business analytics, and market research.</i>
+
+ <h3>Cloud Computing:</h3>
+   <i>- Familiarity with cloud platforms like AWS, Azure, or Google Cloud can be advantageous as businesses increasingly rely on cloud services for scalability, security, and flexibility.</i>
+ <h3>Artificial Intelligence (AI) and Machine Learning (ML):</h3>
+  <i> - Understanding the basics of AI and ML and gaining hands-on experience with frameworks like TensorFlow or PyTorch can be beneficial in fields like data science, automation, and AI development.</i>
+
+ <h3>Cybersecurity:</h3>
+   <i>- With the growing frequency of cyber threats, skills in cybersecurity are highly sought after. Learning about network security, ethical hacking, and security best practices can be valuable.</i>
+
+ <h3>Soft Skills:</h3>
+  <i> - Effective communication, problem-solving, critical thinking, teamwork, and adaptability are essential soft skills that employers often look for in candidates.</i>
+
+<h3> Project Management:</h3>
+   <i> Developing project management skills and familiarity with tools like Agile methodologies can be valuable in various industries.</i>
+
+<h3>Digital Marketing:</h3>
+   <i>- Knowledge of digital marketing strategies, social media management, and SEO can be beneficial for students interested in marketing, communications, or entrepreneurship.</i>
+
+ <h3>Blockchain Technology:</h3>
+   <i> - Understanding blockchain concepts and technologies can be advantageous, especially in finance, supply chain, and other industries exploring blockchain applications.</i>
+
+ <h3>Health and Wellness Skills:</h3>
+   <i> - As awareness of mental health and well-being grows, skills related to counseling, coaching, mindfulness, and other wellness practices can be relevant.</i>
+
+ <p>It's crucial for students to align their skill development with their career goals and the specific industry they plan to enter. Additionally, gaining practical experience through internships, projects, and networking can significantly enhance their job prospects. The job market is dynamic, so staying adaptable and continuously updating skills will be beneficial throughout one's career.</p>
+
+</div>
+<div class="footer1" id="1">
+  
+   
+   
+   <div class="app-link"> <a href="https://www.instagram.com/harshkaushik187"><i class="fa-brands fa-instagram"></i> Instagram </a></div> 
+   <div class="app-link"><a href="https://twitter.com/kaushikharsh244"><i class="fa-brands fa-twitter"></i> twitter </a></div>
+   <div class="app-link"><a href="https://facebook.com/Harsh"><i class="fa-brands fa-facebook"></i> facebook</a></div>
+
+</div>
+
+  
+ 
+  </div>
+</div>
+
+<div id="News" class="tabcontent">
+  <div class="nvb">
+    <h1 class="br2">  Today's Breaking News </h1>
+  </div>
+  <div class="news-section">
+  <h3>News</h3>
+  <p>Some news this fine day!</p> 
+  <div class="breaking-news">Click here to read news articles from the <b> Times of India</b>.<div class="pic-name">
+    <a href="https://timesofindia.indiatimes.com/india"> <img src ="https://static.wikia.nocookie.net/logopedia/images/9/94/The_Times_of_India_Red_Logo.jpg/revision/latest?cb=20210602195907"  style="height:auto; background-size: cover; width:100%"   alt=""></a>
+</div>
+<hr>
+  </div> 
+  <div class="breaking-news">Click here to read news articles from the <b>Aajtak</b><div class="pic-name">
+     <a href="https://www.aajtak.in/"><img src="https://i.ytimg.com/vi/iB8RbFkh-Zw/maxresdefault.jpg"  style="height:auto; background-size: cover; width:100%"  alt=""></a>
+    </div>
+    <hr>
+  </div>
+  <div class="breaking-news">Click here to read news articles from the <b>BBC World</b><div class="pic-name">
+    <a href="https://www.bbc.com"> <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ad/BBC_News_logo.svg/400px-BBC_News_logo.svg.png"  style="height:auto; background-size: cover; width:100% "  alt=""></a>
+</div>
+<hr>
+   </div>
+
+</div>
+</div>
+
+<div id="Contact" class="tabcontent">
+   
+  <h3>Contact</h3>
+  <h2> Fill the Login Form and get my insta i'd</h2>
+
+
+<button class="login" onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Login</button>
+
+<div id="id01" class="modal">
+  
+  <form class="modal-content animate" action="/action_page.php" method="post">
+    <div class="imgcontainer">
+      <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+      <img src="https://c1.klipartz.com/pngpicture/823/765/sticker-png-login-icon-system-administrator-user-user-profile-icon-design-avatar-face-head.png" alt="Avatar" class="avatar">
+    </div>
+
+    <div class="container">
+     
+      <label for="uname"><b>Username</b></label>
+      <input type="text" placeholder="Enter Username" name="uname" required>
+
+      <label for="psw"><b>Password</b></label>
+      <input type="password" placeholder="Enter Password" name="psw" required>
+        
+      <button id="btn" >Login</button>
+      
+      <label>
+        <input type="checkbox" checked="checked" name="remember" style="color:black"> Remember me
+      </label>
+    </div>
+
+    <div class="container" style="background-color:#f1f1f1">
+      <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+      <span class="psw">Forgot <a href="#">password?</a></span>
+
+    </div>
+  </form>
+  
+</div>
+<div class="hero">
+  <h1 class="emoji" contenteditable>&#12855143;</h1>
+  
+</div>
+</div>
+
+<div id="About" class="tabcontent">
+  <h1>Becoming a "Top 1% Man": Principles and Strategies</h1>
+
+<h2>Set Clear Goals</h2>
+<p>Define what success means to you in different areas of your life, such as career, relationships, health, and personal development. Set specific, measurable, achievable, relevant, and time-bound (SMART) goals to guide your actions.</p>
+
+<h2>Continuous Learning</h2>
+<p>Commit to lifelong learning and self-improvement. Stay curious, read books, take courses, attend workshops, and seek mentorship to expand your knowledge and skills.</p>
+
+<h2>Work Ethic and Discipline</h2>
+<p>Develop a strong work ethic and discipline to consistently put in the effort required to achieve your goals. Be willing to work hard, stay focused, and persevere through challenges and setbacks.</p>
+
+<h2>Time Management</h2>
+<p>Learn to prioritize tasks, manage your time effectively, and avoid distractions. Use tools and techniques such as to-do lists, calendars, and time-blocking to optimize your productivity.</p>
+
+<h2>Networking and Relationships</h2>
+<p>Build strong relationships with people who can support and inspire you on your journey. Network strategically, seek out mentors and role models, and surround yourself with positive influences.</p>
+
+<h2>Health and Wellness</h2>
+<p>Take care of your physical and mental well-being. Prioritize exercise, proper nutrition, adequate sleep, stress management, and mindfulness practices to maintain your energy, focus, and resilience.</p>
+
+<h2>Emotional Intelligence</h2>
+<p>Develop emotional intelligence to understand and manage your own emotions, as well as effectively navigate social interactions and relationships. Cultivate empathy, self-awareness, self-regulation, and effective communication skills.</p>
+
+<h2>Financial Management</h2>
+<p>Take control of your finances and work towards financial independence. Budget wisely, save and invest prudently, and strive to build multiple streams of income to achieve financial stability and security.</p>
+
+<h2>Leadership and Influence</h2>
+<p>Cultivate leadership skills and the ability to influence others positively. Lead by example, empower others, communicate effectively, and inspire action towards shared goals.</p>
+
+<h2>Purpose and Impact</h2>
+<p>Align your actions with your values and a sense of purpose. Strive to make a meaningful impact in your community and the world, whether through your career, volunteer work, or other endeavors.</p>
+
+ </div>
+
+<script>     
+function openPage(pageName,elmnt,color) {
+  var i, tabcontent, tablinks;
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablink");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].style.backgroundColor = "";
+  }
+  document.getElementById(pageName).style.display = "block";
+  elmnt.style.backgroundColor = color;
+}
+
+// Get the element with id="defaultOpen" and click on it
+document.getElementById("defaultOpen").click();
+
+var modal = document.getElementById('id01');
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+document.getElementById('btn').addEventListener('click', function() {
+            // You can change the URL to the desired page
+            window.open('https://www.instagram.com/harshkaushik187/', '_blank');
+        });
+
+
+
+        const hero = document.querySelector('.hero');
+  const text = hero.querySelector('h1');
+  const walk = 500; // 500px
+  function shadow(e) {
+    const { offsetWidth: width, offsetHeight: height } = hero;
+    let { offsetX: x, offsetY: y } = e;
+    if (this !== e.target) {
+      x = x + e.target.offsetLeft;
+      y = y + e.target.offsetTop;
+    }
+    const xWalk = Math.round((x / width * walk) - (walk / 2));
+    const yWalk = Math.round((y / height * walk) - (walk / 2));
+    text.style.textShadow = `
+      ${xWalk}px ${yWalk}px 0 rgba(255,0,255,0.7),
+      ${xWalk * -1}px ${yWalk}px 0 rgba(0,255,255,0.7),
+      ${yWalk}px ${xWalk * -1}px 0 rgba(0,255,0,0.7),
+      ${yWalk * -1}px ${xWalk}px 0 rgba(87,57,59,0.7)
+    `;
+  }
+  hero.addEventListener('mousemove', shadow);
+
+</script>
+
+   
+</body>
+</html> 
